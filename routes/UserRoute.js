@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const Auth = require('../midllewares/AuthMiddle')
+const Auth = require('../midllewares/AuthMiddle')
 const { getUsers, createUser, atualizaUsers, getUser, deletaUser, login } = require("../controllers/UserController")
 
 

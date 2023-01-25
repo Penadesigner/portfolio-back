@@ -60,8 +60,8 @@ exports.deletaJob = async (req, res) => {
 
 
 
-/////////////////////////// HABILIDADES ////////////////////////////////////////////////
-// Busca uma habilidade
+/////////////////////////// Formacoes ////////////////////////////////////////////////
+// Busca uma Formacao
 exports.getFormacao = async (req, res) => {
     try {
         const formacao = await PortServices.getForma();
@@ -71,7 +71,7 @@ exports.getFormacao = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
-// Cria uma habilidade
+// Cria uma Formacao
 exports.createFormacao = async (req, res) => {
     try {
         const {escola, curso, periodo} = req.body
@@ -86,7 +86,7 @@ exports.createFormacao = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
-// Edita uma habilidade
+// Edita uma Formacao
 exports.atualizaFormacao = async (req, res) => {
     try {
         var id = req.params.id
@@ -102,7 +102,7 @@ exports.atualizaFormacao = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
-// Excluir uma habilidade
+// Excluir uma Formacao
 exports.deletaFormacao = async (req, res) => {
     try {
         var id = req.params.id  
@@ -148,6 +148,56 @@ exports.createObjetivo = async (req, res) => {
 };
 // Edita uma habilidade
 exports.atualizaObjetivo = async (req, res) => {
+    try {
+        var id = req.params.id
+        const update = {
+            objetivo: req.body?.objetivo,
+            qualificacoes: req.body?.qualificacoes,
+            cargo: req.body?.cargo
+        }
+        const obj_edit = await PortServices.atualizaObj(id, update);
+        res.status(200).json({ data: obj_edit });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: error.message });
+    }
+};
+
+
+
+
+
+
+
+
+/////////////////////// HABILIDADES //////////////////////
+
+exports.getHabilidade = async (req, res) => {
+    try {
+        const habilidade = await PortServices.getObj();
+        res.status(200).json({ data: habilidade });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: error.message });
+    }
+};
+// Cria uma habilidade
+exports.createHabilidade = async (req, res) => {
+    try {
+        const {objetivo, qualificacoes, cargo} = req.body
+        const obj = await PortServices.createObj({
+            objetivo, 
+            qualificacoes, 
+            cargo
+        });
+        res.status(200).json({ data: obj });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: error.message });
+    }
+};
+// Edita uma habilidade
+exports.atualizaHabilidade = async (req, res) => {
     try {
         var id = req.params.id
         const update = {

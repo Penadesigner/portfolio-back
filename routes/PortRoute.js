@@ -20,4 +20,8 @@ router.get('/obj', getObjetivo)
 router.post('/obj', createObjetivo)
 router.put('/obj/:id', atualizaObjetivo)
 
+//router.get('/habilidade', getHabilidade)
+//router.post('/habilidade', createHabilidade)
+//router.put('/habilidade/:id', atualizaHabilidade)
+
 module.exports = router

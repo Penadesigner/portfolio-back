@@ -1,30 +1,23 @@
-const Sequelize = require('sequelize');
-const db = require('./index.js');
+const Sequelize = require('sequelize')
+const db = require('./Index.js')
 
-const Users = db.define('user',{
+const habilidades = db.define('habilidades',{
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
-    name: {
+    nome: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    email: {
+    descricao: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    permissao: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        default: 'usuario'
-    },
-    password: {
+    periodo: {
         type: Sequelize.STRING,
         allowNull: false
     },
 })
-
-module.exports = Users

@@ -27,11 +27,12 @@ exports.getUser = async (req, res) => {
 // Cria um usuario
 exports.createUser = async (req, res) => {
     try {
-        const {name, email, password} = req.body
+        const {name, email, password, permissao} = req.body
         const user = await UserServices.createUser({
             name,
             email,
-            password: md5(password)
+            password: md5(password),
+            permissao
         });
         res.status(200).json({ data: user });
     } catch (error) {
@@ -73,7 +74,9 @@ exports.login = async (req, res) => {
     console.log(req);
     try {
         const credenciais = basic(req)
+        console.log(req.headers);
         const user = await UserServices.login(credenciais.name, md5(credenciais.pass));
+
         res.status(200).json({ user });
     } catch (error) {
         console.log(error);
