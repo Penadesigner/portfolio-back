@@ -175,7 +175,7 @@ exports.atualizaObjetivo = async (req, res) => {
 exports.getHabilidade = async (req, res) => {
     try {
         const habilidade = await PortServices.getObj();
-        res.status(200).json({ data: habilidade });
+        res.status(200).json({ data: habilidade });w
     } catch (error) {
         console.log(error);
         res.status(400).json({ error: error.message });

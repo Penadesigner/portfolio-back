@@ -74,7 +74,7 @@ exports.login = async (req, res) => {
     console.log(req);
     try {
         const credenciais = basic(req)
-        console.log(req.headers);
+        console.log(req.headers);   
         const user = await UserServices.login(credenciais.name, md5(credenciais.pass));
 
         res.status(200).json({ user });
